@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WONDERFATION - Ummul Qura Tis'ata 'Asyara</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Cinzel', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f4f4f6',
+                            100: '#e6e6ea',
+                            200: '#ceced6',
+                            300: '#a8a8b7',
+                            400: '#7c7c91',
+                            500: '#5c5c70',
+                            600: '#464656',
+                            700: '#343440',
+                            800: '#1f1f26',
+                            900: '#111115',
+                            gold: '#d4af37',
+                            silver: '#c0c0c0',
+                            accent: '#2a2a35'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(26, 26, 32, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: rgba(35, 35, 45, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .glass-card:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff 0%, #c0c0c0 50%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .silver-gold-border {
+            border: 1px solid transparent;
+            background-image: linear-gradient(#191921, #191921), linear-gradient(135deg, #d4af37, #8a8a9e, #ffffff);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+        }
+    </style>
+</head>
+<body class="bg-[#0f0f13] text-gray-200 antialiased font-sans min-h-screen selection:bg-brand-gold selection:text-black">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand / Logo Dinamis -->
+                <div class="flex items-center gap-3">
+                    <div id="navLogoContainer" class="flex items-center gap-3">
+                        <div id="navLogoBadge" class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-gold to-amber-700 flex items-center justify-center text-black font-heading font-extrabold text-lg shadow-lg border border-white/20">
+                            W
+                        </div>
+                    </div>
+                    <div>
+                        <span id="navBrandName" class="font-heading font-bold text-lg sm:text-xl tracking-wider text-white block">WONDERFATION</span>
+                        <span id="navBrandSub" class="text-[10px] text-brand-gold tracking-widest uppercase block font-semibold">Ummul Qura Tis'ata 'Asyara</span>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    <a href="#beranda" class="hover:text-brand-gold transition-colors">Beranda</a>
+                    <a href="#tentang" class="hover:text-brand-gold transition-colors">Filosofi</a>
+                    <a href="#pengurus" class="hover:text-brand-gold transition-colors">Pengurus</a>
+                    <a href="#anggota" class="hover:text-brand-gold transition-colors">Anggota</a>
+                    <a href="#galeri" class="hover:text-brand-gold transition-colors">Galeri</a>
+                    <a href="#timeline" class="hover:text-brand-gold transition-colors">Timeline</a>
+                    <a href="#pesan" class="hover:text-brand-gold transition-colors">Kesan Pesan</a>
+                </div>
+
+                <!-- Admin Action -->
+                <div class="flex items-center gap-3">
+                    <button id="adminBtnNav" onclick="openAdminModal()" class="px-4 py-2 rounded-lg bg-gradient-to-r from-brand-gold/20 to-brand-silver/20 border border-brand-gold/40 text-brand-gold hover:bg-brand-gold hover:text-black transition-all text-sm font-semibold flex items-center gap-2">
+                        <i class="fa-solid fa-user-shield"></i> <span id="adminBtnText">Login Admin</span>
+                    </button>
+                    <button id="mobileMenuToggle" onclick="toggleMobileMenu()" class="md:hidden text-gray-300 hover:text-white p-2">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 glass px-4 py-4 space-y-3">
+            <a href="#beranda" onclick="toggleMobileMenu()" class="block text-sm hover:text-brand-gold">Beranda</a>
+            <a href="#tentang" onclick="toggleMobileMenu()" class="block text-sm hover:text-brand-gold">Filosofi</a>
+            <a href="#pengurus" onclick="toggleMobileMenu()" class="block text-sm hover:text-brand-gold">Pengurus</a>
+            <a href="#anggota" onclick="toggleMobileMenu()" class="block text-sm hover:text-brand-gold">Anggota</a>
+            <a href="#galeri" onclick="toggleMobileMenu()" class="block text-sm hover:text-brand-gold">Galeri</a>
+            <a href="#timeline" onclick="toggleMobileMenu()" class="block text-sm hover:text-brand-gold">Timeline</a>
+            <a href="#pesan" onclick="toggleMobileMenu()" class="block text-sm hover:text-brand-gold">Kesan Pesan</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="beranda" class="pt-32 pb-20 px-4 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass border border-brand-gold/40 text-brand-gold text-xs font-semibold tracking-wider uppercase shadow-md">
+                        <i class="fa-solid fa-crown text-amber-400"></i> Portal Resmi Angkatan
+                    </div>
+                    <h1 id="heroTitle" class="text-4xl sm:text-6xl font-heading font-extrabold tracking-tight gradient-text leading-tight">
+                        WONDERFATION
+                    </h1>
+                    <p id="heroSubtitle" class="text-xl sm:text-2xl font-light text-gray-300 tracking-widest font-heading">
+                        ummul qura tis'ata 'asyara
+                    </p>
+                    <p id="heroQuote" class="text-gray-300 text-base sm:text-lg max-w-2xl leading-relaxed italic border-l-2 border-brand-gold/60 pl-4 my-4">
+                        "Satu Perjalanan, Ribuan Kenangan, Kebersamaan Tanpa Batas. Mengukir Sejarah Bersama Dalam Keharmonisan."
+                    </p>
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#anggota" class="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-600 to-yellow-500 text-black font-bold hover:shadow-lg hover:shadow-amber-500/20 transition-all">
+                            Eksplor Anggota
+                        </a>
+                        <a href="#timeline" class="px-6 py-3 rounded-xl glass border border-white/20 text-white font-medium hover:bg-white/10 transition-all">
+                            Lihat Timeline
+                        </a>
+                    </div>
+                </div>
+                <!-- Hero Emblem Card / Logo Display -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative group w-full max-w-md">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-brand-gold via-gray-400 to-amber-600 rounded-3xl blur opacity-40 group-hover:opacity-70 transition duration-1000"></div>
+                        <div class="relative glass-card p-8 rounded-3xl silver-gold-border flex flex-col items-center text-center space-y-4">
+                            <div id="heroLogoDisplay" class="w-24 h-24 rounded-2xl bg-gradient-to-br from-amber-500 via-yellow-600 to-zinc-900 flex items-center justify-center text-black font-heading font-black text-4xl shadow-2xl border-2 border-brand-gold overflow-hidden">
+                                W
+                            </div>
+                            <h3 class="text-2xl font-heading font-bold text-white tracking-widest">WONDERFATION</h3>
+                            <p class="text-xs text-brand-gold font-semibold uppercase tracking-widest">Ummul Qura Tis'ata 'Asyara</p>
+                            <span class="mt-2 text-[11px] tracking-widest text-gray-400 uppercase font-semibold border-t border-white/10 pt-3 w-full">Emblem Kehormatan Angkatan</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FILOSOFIS & STATISTIK -->
+    <section id="tentang" class="py-16 px-4 bg-black/40 border-y border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="glass-card p-6 rounded-2xl text-center">
+                    <i class="fa-solid fa-users-viewfinder text-3xl text-brand-gold mb-3"></i>
+                    <h3 class="text-3xl font-bold text-white mb-1" id="statAnggota">150+</h3>
+                    <p class="text-gray-400 text-sm">Total Anggota</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl text-center">
+                    <i class="fa-solid fa-shield-halved text-3xl text-gray-300 mb-3"></i>
+                    <h3 class="text-3xl font-bold text-white mb-1" id="statDivisi">8</h3>
+                    <p class="text-gray-400 text-sm">Divisi & Pengurus</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl text-center">
+                    <i class="fa-solid fa-award text-3xl text-amber-400 mb-3"></i>
+                    <h3 class="text-3xl font-bold text-white mb-1" id="statKarya">100%</h3>
+                    <p class="text-gray-400 text-sm">Solidaritas & Kehormatan</p>
+                </div>
+            </div>
+
+            <div class="glass p-8 rounded-3xl border border-brand-gold/30">
+                <h2 class="text-2xl font-heading font-bold text-brand-gold mb-4 text-center">Filosofi & Identitas</h2>
+                <p id="aboutText" class="text-gray-300 text-center max-w-6xl mx-auto leading-relaxed">
+                    Wonderfation (Ummul Qura Tis'ata 'Asyara) melambangkan persatuan, keberanian, dan kejayaan. Simbolis seni kaligrafi dan arsitektur kubah pada emblem mencerminkan pondasi spiritual yang kuat serta cita-cita tinggi yang senantiasa menaungi setiap langkah perjuangan anggota angkatan.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PENGURUS INTI -->
+    <section id="pengurus" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-heading font-bold text-white">Struktur Pengurus Inti</h2>
+                <p class="text-gray-400 text-sm mt-2">Bagan Kepemimpinan Angkatan Wonderfation</p>
+            </div>
+            <div id="pengurusContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Data Pengurus Diisi Via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- DIREKTORI ANGGOTA -->
+    <section id="anggota" class="py-20 px-4 bg-black/40 border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
+                <div>
+                    <h2 class="text-3xl font-heading font-bold text-white">Direktori Anggota</h2>
+                    <p class="text-gray-400 text-sm mt-1">Daftar Lengkap Rekan Seperjuangan</p>
+                </div>
+                <!-- Search & Filter Controls -->
+                <div class="flex flex-wrap items-center gap-3">
+                    <div class="relative">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                        <input type="text" id="searchInput" onkeyup="filterMembers()" placeholder="Cari nama / quote..." class="pl-9 pr-4 py-2 rounded-xl bg-zinc-900 border border-white/10 text-sm focus:outline-none focus:border-brand-gold text-white w-60">
+                    </div>
+                    <select id="filterClass" onchange="filterMembers()" class="px-4 py-2 rounded-xl bg-zinc-900 border border-white/10 text-sm focus:outline-none focus:border-brand-gold text-white">
+                        <!-- Dynamic filter options populated via JS -->
+                    </select>
+                </div>
+            </div>
+
+            <div id="membersGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Card Anggota Diisi via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERI DOKUMENTASI -->
+    <section id="galeri" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-heading font-bold text-white">Galeri Kenangan</h2>
+                <p class="text-gray-400 text-sm mt-1">Momen Kebersamaan Yang Tak Terlupakan</p>
+            </div>
+            <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Foto Galeri Diisi Via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- TIMELINE PERJALANAN -->
+    <section id="timeline" class="py-20 px-4 bg-black/40 border-t border-white/5">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-14">
+                <h2 class="text-3xl font-heading font-bold text-white">Timeline & Jejak Langkah</h2>
+                <p class="text-gray-400 text-sm mt-1">Perjalanan Angkatan Dari Awal Hingga Kemenangan</p>
+            </div>
+            <div id="timelineContainer" class="relative border-l-2 border-brand-gold/40 ml-4 md:ml-32 space-y-10">
+                <!-- Items Timeline Diisi via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- KESAN & PESAN -->
+    <section id="pesan" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-heading font-bold text-white">Kesan & Pesan Angkatan</h2>
+                <p class="text-gray-400 text-sm mt-1">Tinggalkan Jejak Kata & Foto Untuk Rekan Seperjuangan</p>
+            </div>
+
+            <!-- Form Tambah Pesan (Dengan Dukungan Foto) -->
+            <div class="glass-card p-6 rounded-2xl mb-10">
+                <form id="guestbookForm" onsubmit="addGuestbookMessage(event)" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <input type="text" id="guestName" placeholder="Nama Anda" required class="px-4 py-2.5 rounded-xl bg-zinc-900 border border-white/10 text-sm text-white focus:outline-none focus:border-brand-gold">
+                        <input type="text" id="guestRole" placeholder="Status / Divisi (misal: IPA 1)" class="px-4 py-2.5 rounded-xl bg-zinc-900 border border-white/10 text-sm text-white focus:outline-none focus:border-brand-gold">
+                    </div>
+                    <textarea id="guestMsg" rows="3" placeholder="Tuliskan kesan dan pesan atau doa untuk angkatan..." required class="w-full px-4 py-2.5 rounded-xl bg-zinc-900 border border-white/10 text-sm text-white focus:outline-none focus:border-brand-gold"></textarea>
+                    
+                    <div class="space-y-1">
+                        <label class="text-xs text-gray-400 block font-medium">Unggah Foto (Pilih File Gambar atau Masukkan URL Foto)</label>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <input type="file" id="guestFile" accept="image/*" onchange="previewGuestImage(event)" class="w-full sm:w-1/2 px-3 py-2 rounded-xl bg-zinc-900 border border-white/10 text-xs text-gray-300 file:mr-4 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-brand-gold file:text-black hover:file:bg-yellow-400">
+                            <input type="text" id="guestImgUrl" placeholder="Atau ketik/paste URL foto di sini" class="w-full sm:w-1/2 px-4 py-2 rounded-xl bg-zinc-900 border border-white/10 text-sm text-white focus:outline-none focus:border-brand-gold">
+                        </div>
+                        <input type="hidden" id="guestBase64Img">
+                        <div id="guestImgPreviewContainer" class="hidden mt-2 flex items-center gap-3">
+                            <img id="guestImgPreview" src="" alt="Preview" class="w-16 h-16 object-cover rounded-xl border border-brand-gold/50">
+                            <span class="text-xs text-brand-gold">Foto berhasil dimuat!</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full py-3 bg-brand-gold text-black font-bold rounded-xl hover:bg-yellow-400 transition-all text-sm shadow-md">
+                        Kirim Kesan & Pesan
+                    </button>
+                </form>
+            </div>
+
+            <!-- Daftar Pesan -->
+            <div id="guestbookList" class="space-y-4">
+                <!-- Pesan Diisi via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 px-4 border-t border-white/10 bg-zinc-950 text-center">
+        <div class="max-w-7xl mx-auto space-y-4">
+            <p class="text-sm text-gray-400 font-heading">WONDERFATION • Ummul Qura Tis'ata 'Asyara</p>
+            <p class="text-xs text-gray-600">&copy; 2026 Official Class Portal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL DASHBOARD ADMIN (CMS) -->
+    <div id="adminModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="glass border border-brand-gold/40 rounded-3xl w-full max-w-6xl p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto shadow-2xl">
+            <button onclick="closeAdminModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white text-xl p-2">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- AUTH SCREEN -->
+            <div id="authScreen" class="max-w-md mx-auto space-y-6">
+                <div class="text-center space-y-2">
+                    <h3 class="text-2xl font-bold font-heading text-brand-gold">Panel Akses Admin</h3>
+                    <p class="text-xs text-gray-400">Masuk dengan akun admin yang telah diizinkan pemilik website.</p>
+                </div>
+
+                <!-- Tabs -->
+                <div class="flex border-b border-white/10">
+                    <button id="tabLoginBtn" onclick="switchAuthTab('login')" class="flex-1 py-2 font-semibold text-sm border-b-2 border-brand-gold text-brand-gold">Login</button>
+                </div>
+
+                <!-- Form Login -->
+                <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4">
+                    <input type="email" id="loginEmail" placeholder="Email Admin" required class="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-white/10 text-white text-sm focus:outline-none focus:border-brand-gold">
+                    <input type="password" id="loginPass" placeholder="Password" required class="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-white/10 text-white text-sm focus:outline-none focus:border-brand-gold">
+                    <button type="submit" class="w-full py-3 bg-brand-gold text-black font-bold rounded-xl hover:bg-yellow-400 transition-all text-sm shadow-lg">Masuk Dashboard</button>
+                </form>
+
+                <p class="text-xs text-gray-500 text-center">Pembuatan akun admin hanya dilakukan oleh pemilik website melalui dashboard Supabase.</p>
+            </div>
+
+            <!-- DASHBOARD SCREEN (CMS) -->
+            <div id="dashboardScreen" class="hidden space-y-6">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-white/10 pb-4 gap-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-brand-gold font-heading">CMS Dashboard Wonderfation</h3>
+                        <p class="text-xs text-gray-400">Kelola logo, pengurus, anggota, galeri foto HP, dan konten</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="exportDataJSON()" class="px-3 py-1.5 rounded-lg bg-zinc-800 text-xs font-semibold text-gray-300 hover:text-white border border-white/10 flex items-center gap-1">
+                            <i class="fa-solid fa-download"></i> Backup JSON
+                        </button>
+                        <button onclick="handleLogout()" class="px-3 py-1.5 rounded-lg bg-red-600/20 text-red-400 text-xs font-semibold border border-red-500/30 hover:bg-red-600 hover:text-white transition-all">
+                            Logout
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Admin Tabs Menu -->
+                <div class="flex overflow-x-auto space-x-2 border-b border-white/10 pb-2">
+                    <button onclick="switchCmsTab('identitas')" class="cms-tab-btn px-4 py-2 text-xs font-semibold rounded-lg bg-brand-gold text-black" data-target="cmsIdentitas">Identitas & Logo</button>
+                    <button onclick="switchCmsTab('pengurus')" class="cms-tab-btn px-4 py-2 text-xs font-semibold rounded-lg bg-zinc-800 text-gray-300" data-target="cmsPengurus">Pengurus Inti & Foto</button>
+                    <button onclick="switchCmsTab('anggota')" class="cms-tab-btn px-4 py-2 text-xs font-semibold rounded-lg bg-zinc-800 text-gray-300" data-target="cmsAnggota">Daftar Anggota & Foto</button>
+                    <button onclick="switchCmsTab('galeri')" class="cms-tab-btn px-4 py-2 text-xs font-semibold rounded-lg bg-zinc-800 text-gray-300" data-target="cmsGaleri">Galeri Foto HP</button>
+                    <button onclick="switchCmsTab('pesan')" class="cms-tab-btn px-4 py-2 text-xs font-semibold rounded-lg bg-zinc-800 text-gray-300" data-target="cmsPesan">Kesan & Pesan</button>
+                    <button onclick="switchCmsTab('timeline')" class="cms-tab-btn px-4 py-2 text-xs font-semibold rounded-lg bg-zinc-800 text-gray-300" data-target="cmsTimeline">Timeline</button>
+                </div>
+
+                <!-- CMS 1: IDENTITAS & CUSTOM LOGO -->
+                <div id="cmsIdentitas" class="cms-panel space-y-4">
+                    <h4 class="text-sm font-bold text-white">Ubah Logo & Informasi Utama</h4>
+                    
+                    <div class="bg-zinc-900 p-4 rounded-xl border border-white/10 space-y-3">
+                        <label class="text-xs text-brand-gold font-bold block">Custom Logo Website (URL Gambar atau Upload File)</label>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <input type="file" id="logoFileCMS" accept="image/*" onchange="previewLogoCMS(event)" class="w-full sm:w-1/2 px-3 py-2 rounded-xl bg-zinc-800 border border-white/10 text-xs text-gray-300 file:mr-4 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-brand-gold file:text-black hover:file:bg-yellow-400">
+                            <input type="text" id="editLogoUrl" placeholder="Atau ketik/paste URL Logo di sini" class="w-full sm:w-1/2 px-3 py-2 rounded-lg bg-zinc-800 border border-white/10 text-xs text-white focus:outline-none focus:border-brand-gold">
+                        </div>
+                        <input type="hidden" id="editLogoBase64">
+                        <p class="text-[11px] text-gray-400">Logo ini akan tampil di Navbar atas dan Emblem Utama beranda secara otomatis.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-xs text-gray-400 block mb-1">Nama Utama Angkatan</label>
+                            <input type="text" id="editTitle" class="w-full px-3 py-2 rounded-lg bg-zinc-900 border border-white/10 text-sm text-white">
+                        </div>
+                        <div>
+                            <label class="text-xs text-gray-400 block mb-1">Sub Judul / Tagline</label>
+                            <input type="text" id="editSubtitle" class="w-full px-3 py-2 rounded-lg bg-zinc-900 border border-white/10 text-sm text-white">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="text-xs text-gray-400 block mb-1">Quote Utama</label>
+                        <textarea id="editQuote" rows="2" class="w-full px-3 py-2 rounded-lg bg-zinc-900 border border-white/10 text-sm text-white"></textarea>
+                    </div>
+                    <div>
+                        <label class="text-xs text-gray-400 block mb-1">Deskripsi Filosofi Angkatan</label>
+                        <textarea id="editAbout" rows="3" class="w-full px-3 py-2 rounded-lg bg-zinc-900 border border-white/10 text-sm text-white"></textarea>
+                    </div>
+                    <button onclick="saveIdentitas()" class="px-4 py-2 bg-brand-gold text-black font-bold text-xs rounded-lg hover:bg-yellow-400">Simpan Identitas & Logo</button>
+                </div>
+
+                <!-- CMS 2: PENGURUS INTI -->
+                <div id="cmsPengurus" class="cms-panel hidden space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h4 class="text-sm font-bold text-white">Kelola Pengurus Inti & Foto</h4>
+                        <button onclick="openAddPengurusForm()" class="px-3 py-1.5 bg-amber-600 text-white text-xs font-bold rounded-lg">+ Tambah Pengurus</button>
+                    </div>
+                    <div id="cmsPengurusList" class="max-h-72 overflow-y-auto space-y-3"></div>
+                </div>
+
+                <!-- CMS 3: ANGGOTA & CUSTOM FOTO -->
+                <div id="cmsAnggota" class="cms-panel hidden space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h4 class="text-sm font-bold text-white">Kelola Anggota & Custom Foto</h4>
+                        <button onclick="openAddMemberForm()" class="px-3 py-1.5 bg-amber-600 text-white text-xs font-bold rounded-lg">+ Tambah Anggota</button>
+                    </div>
+                    <div id="cmsMemberList" class="max-h-72 overflow-y-auto space-y-3"></div>
+                </div>
+
+                <!-- CMS 4: GALERI FOTO HP / DEVICE UPLOAD -->
+                <div id="cmsGaleri" class="cms-panel hidden space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h4 class="text-sm font-bold text-white">Kelola Galeri Foto (Unggah Dari HP / Perangkat)</h4>
+                    </div>
+
+                    <!-- Form Unggah Foto Galeri Baru Langsung Dari HP -->
+                    <div class="bg-zinc-900 p-4 rounded-xl border border-white/10 space-y-3">
+                        <label class="text-xs text-brand-gold font-bold block"><i class="fa-solid fa-cloud-arrow-up"></i> Tambah Foto Baru Dari Galeri HP</label>
+                        <div class="space-y-2">
+                            <input type="text" id="galleryTitleInput" placeholder="Judul / Keterangan Foto (misal: Makrab Angkatan)" class="w-full px-3 py-2 rounded-lg bg-zinc-800 border border-white/10 text-xs text-white focus:outline-none focus:border-brand-gold">
+                            <select id="galleryCatInput" class="w-full px-3 py-2 rounded-lg bg-zinc-800 border border-white/10 text-xs text-white focus:outline-none focus:border-brand-gold">
+                                <option value="Acara">Acara</option>
+                                <option value="Resmi">Resmi</option>
+                                <option value="Kegiatan">Kegiatan</option>
+                                <option value="Kenangan">Kenangan</option>
+                            </select>
+                            <div class="flex flex-col sm:flex-row gap-3 pt-1">
+                                <input type="file" id="galleryFileDevice" accept="image/*" onchange="previewGalleryDeviceImage(event)" class="w-full sm:w-1/2 px-3 py-2 rounded-lg bg-zinc-800 border border-white/10 text-xs text-gray-300 file:mr-4 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-brand-gold file:text-black hover:file:bg-yellow-400">
+                                <input type="text" id="galleryUrlInput" placeholder="Atau paste URL foto" class="w-full sm:w-1/2 px-3 py-2 rounded-lg bg-zinc-800 border border-white/10 text-xs text-white focus:outline-none focus:border-brand-gold">
+                            </div>
+                            <input type="hidden" id="galleryBase64Output">
+                            <div id="galleryPreviewContainer" class="hidden flex items-center gap-3 pt-2">
+                                <img id="galleryImgPreview" src="" alt="Preview" class="w-20 h-20 object-cover rounded-xl border border-brand-gold">
+                                <span class="text-xs text-brand-gold font-medium">Foto siap ditambahkan ke galeri!</span>
+                            </div>
+                        </div>
+                        <button onclick="addNewGalleryPhoto()" class="w-full py-2.5 bg-brand-gold text-black font-bold text-xs rounded-lg hover:bg-yellow-400 transition-all shadow-md">
+                            + Masukkan Ke Galeri Website
+                        </button>
+                    </div>
+
+                    <!-- Daftar Foto Galeri Saat Ini -->
+                    <div>
+                        <label class="text-xs text-gray-400 block mb-2 font-medium">Daftar Foto Galeri Saat Ini:</label>
+                        <div id="cmsGalleryList" class="max-h-60 overflow-y-auto grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
+                    </div>
+                </div>
+
+                <!-- CMS 5: KESAN & PESAN -->
+                <div id="cmsPesan" class="cms-panel hidden space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h4 class="text-sm font-bold text-white">Kelola & Moderasi Kesan Pesan</h4>
+                        <span class="text-xs text-gray-400">Admin dapat menghapus pesan yang tidak sesuai</span>
+                    </div>
+                    <div id="cmsGuestbookList" class="max-h-72 overflow-y-auto space-y-3"></div>
+                </div>
+
+                <!-- CMS 6: TIMELINE -->
+                <div id="cmsTimeline" class="cms-panel hidden space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h4 class="text-sm font-bold text-white">Kelola Timeline & Jejak Langkah</h4>
+                        <button onclick="openAddTimelineForm()" class="px-3 py-1.5 bg-amber-600 text-white text-xs font-bold rounded-lg">+ Tambah Timeline</button>
+                    </div>
+                    <div id="cmsTimelineList" class="max-h-60 overflow-y-auto space-y-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Supabase client: public publishable key only; never put service_role/secret keys here. -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- SCRIPT DATA & CMS ENGINE -->
+    <script>
+        // DATA DEFAULT WONDERFATION
+        const defaultData = {
+            identitas: {
+                title: "WONDERFATION",
+                subtitle: "ummul qura tis'ata 'asyara",
+                quote: "Satu Perjalanan, Ribuan Kenangan, Kebersamaan Tanpa Batas. Mengukir Sejarah Bersama Dalam Keharmonisan.",
+                about: "Wonderfation (Ummul Qura Tis'ata 'Asyara) melambangkan persatuan, keberanian, dan kejayaan. Simbolis seni kaligrafi dan arsitektur kubah pada emblem mencerminkan pondasi spiritual yang kuat serta cita-cita tinggi yang senantiasa menaungi setiap langkah perjuangan anggota angkatan.",
+                logoUrl: ""
+            },
+            pengurus: [
+                { role: "Ketua Angkatan", name: "Ahmad Zaky", quote: "Pemimpin yang melayani dengan ketulusan.", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400" },
+                { role: "Wakil Ketua", name: "Muhammad Farhan", quote: "Menjaga pilar kebersamaan tetap kokoh.", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400" },
+                { role: "Sekretaris Utama", name: "Siti Nurhaliza", quote: "Mencatat setiap kenangan dan sejarah.", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400" },
+                { role: "Bendahara Umum", name: "Rizky Ramadhan", quote: "Amanah dalam setiap tata kelola angkatan.", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400" }
+            ],
+            members: [
+                { id: 1, name: "Ahmad Zaky", class: "IPA 1", role: "Ketua", quote: "Terus melangkah meski perlahan.", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400" },
+                { id: 2, name: "Muhammad Farhan", class: "IPS 2", role: "Wakil", quote: "Solidaritas tanpa batas.", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400" },
+                { id: 3, name: "Siti Nurhaliza", class: "IPA 1", role: "Sekretaris", quote: "Jadikan masa muda penuh arti.", img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400" },
+                { id: 4, name: "Rizky Ramadhan", class: "IPS 1", role: "Bendahara", quote: "Kejujuran adalah kehormatan.", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400" },
+                { id: 5, name: "Nabila Putri", class: "AGAMA", role: "Anggota", quote: "Semangat menuntut ilmu.", img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=400" },
+                { id: 6, name: "Fajar Pratama", class: "IPA 2", role: "Anggota", quote: "Fokus pada masa depan.", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400" }
+            ],
+            timeline: [
+                { year: "2023", title: "Awal Pertemuan & Masa Orientasi", desc: "Pertama kali berkumpul dan membentuk ikatan persaudaraan awal Wonderfation." },
+                { year: "2024", title: "Musyawarah Pembentukan Struktur", desc: "Pemilihan resmi ketua angkatan, perumusan visi misi, serta logo resmi." },
+                { year: "2025", title: "Acara Tahunan & Rihlah Bersama", desc: "Pelaksanaan agenda besar angkatan dan mempererat solidaritas antar divisi." },
+                { year: "2026", title: "Kelulusan & Puncak Kejayaan", desc: "Momen pelepasan resmi, wisuda, dan langkah menuju masa depan." }
+            ],
+            gallery: [
+                { title: "Momen Kebersamaan Rihlah", category: "Acara", img: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80&w=600" },
+                { title: "Foto Bersama Pengurus", category: "Resmi", img: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80&w=600" },
+                { title: "Diskusi & Musyawarah", category: "Kegiatan", img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80&w=600" }
+            ]
+        };
+
+        // KONFIGURASI SUPABASE. Isi dua nilai ini setelah membuat project Supabase.
+        // Gunakan Project URL + publishable/anon key. JANGAN pernah memasukkan service_role/secret key.
+        const SUPABASE_URL = "https://rbaejyxcrgahumiljsx.supabase.co";
+        const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_nTZ-RK5fiIa1m2skCo6maA_AHl9F4qr";
+        const supabaseConfigured = !SUPABASE_URL.startsWith("GANTI_") && !SUPABASE_PUBLISHABLE_KEY.startsWith("GANTI_");
+        const sb = supabaseConfigured && window.supabase
+            ? window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY)
+            : null;
+
+        let appData = JSON.parse(JSON.stringify(defaultData));
+        if (!appData.identitas.logoUrl) appData.identitas.logoUrl = "";
+        let currentUser = null;
+        let guestbook = [];
+
+        async function saveData() {
+            renderAll();
+            if (!sb) { alert("Database belum dikonfigurasi. Hubungkan Supabase terlebih dahulu."); return; }
+            if (!currentUser) { alert("Silakan login sebagai admin untuk menyimpan perubahan."); return; }
+            const { error } = await sb.from("app_state").upsert({ id: "main", data: appData, updated_by: currentUser.id });
+            if (error) alert("Gagal menyimpan ke database: " + error.message);
+        }
+
+        async function loadSharedData() {
+            if (!sb) { renderAll(); renderGuestbook(); return; }
+            const [{ data: state, error: stateError }, { data: messages, error: guestError }] = await Promise.all([
+                sb.from("app_state").select("data").eq("id", "main").maybeSingle(),
+                sb.from("guestbook").select("id,name,role,msg,img,created_at").order("created_at", { ascending: false }).limit(200)
+            ]);
+            if (stateError) console.error("Gagal membaca app_state:", stateError.message);
+            if (state?.data) appData = state.data;
+            if (!appData.identitas) appData = JSON.parse(JSON.stringify(defaultData));
+            if (guestError) console.error("Gagal membaca guestbook:", guestError.message);
+            guestbook = (messages || []).map(m => ({ ...m, date: new Date(m.created_at).toLocaleDateString("id-ID", { day: "numeric", month: "short", year: "numeric" }) }));
+            renderAll();
+            renderGuestbook();
+        }
+
+        async function refreshAuthState() {
+            if (!sb) return;
+            const { data: { session } } = await sb.auth.getSession();
+            currentUser = session?.user || null;
+            if (currentUser) {
+                const { data: adminRow, error } = await sb.from("admin_members").select("user_id").eq("user_id", currentUser.id).maybeSingle();
+                if (error || !adminRow) {
+                    await sb.auth.signOut();
+                    currentUser = null;
+                    alert("Akun ini belum diberi hak admin oleh pemilik website.");
+                }
+            }
+            updateAdminButton();
+        }
+
+        function updateAdminButton() {
+            const label = document.getElementById("adminBtnText");
+            if (label) label.textContent = currentUser ? "Dashboard Admin" : "Login Admin";
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // RENDER FUNGSI UTAMA
+        function renderAll() {
+            // Render Identitas & Logo Custom
+            document.getElementById('heroTitle').innerText = appData.identitas.title;
+            document.getElementById('heroSubtitle').innerText = appData.identitas.subtitle;
+            document.getElementById('heroQuote').innerText = '"' + appData.identitas.quote + '"';
+            document.getElementById('aboutText').innerText = appData.identitas.about;
+
+            // Update Logo Navbar
+            const navLogoContainer = document.getElementById('navLogoContainer');
+            if (appData.identitas.logoUrl) {
+                navLogoContainer.innerHTML = `<img src="${appData.identitas.logoUrl}" alt="Logo" class="w-10 h-10 rounded-xl object-contain bg-black/50 border border-brand-gold/40 p-1">`;
+            } else {
+                navLogoContainer.innerHTML = `<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-gold to-amber-700 flex items-center justify-center text-black font-heading font-extrabold text-lg shadow-lg border border-white/20">W</div>`;
+            }
+
+            // Update Logo Hero Display
+            const heroLogoDisplay = document.getElementById('heroLogoDisplay');
+            if (appData.identitas.logoUrl) {
+                heroLogoDisplay.innerHTML = `<img src="${appData.identitas.logoUrl}" alt="Logo Emblem" class="w-full h-full object-contain p-2">`;
+                heroLogoDisplay.className = "w-24 h-24 rounded-2xl bg-black/60 flex items-center justify-center shadow-2xl border-2 border-brand-gold overflow-hidden";
+            } else {
+                heroLogoDisplay.innerHTML = `W`;
+                heroLogoDisplay.className = "w-24 h-24 rounded-2xl bg-gradient-to-br from-amber-500 via-yellow-600 to-zinc-900 flex items-center justify-center text-black font-heading font-black text-4xl shadow-2xl border-2 border-brand-gold overflow-hidden";
+            }
+
+            // Update statistik divisi mengikuti jumlah pengurus inti
+            document.getElementById('statDivisi').innerText = appData.pengurus.length;
+
+            // Render Pengurus
+            const pengurusContainer = document.getElementById('pengurusContainer');
+            pengurusContainer.innerHTML = appData.pengurus.map(p => `
+                <div class="glass-card p-6 rounded-2xl text-center flex flex-col items-center">
+                    <img src="${p.img || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400'}" alt="${p.name}" class="w-24 h-24 rounded-full object-cover mb-4 border-2 border-brand-gold">
+                    <span class="text-xs font-semibold px-3 py-1 rounded-full bg-brand-gold/20 text-brand-gold mb-2">${p.role}</span>
+                    <h3 class="text-lg font-bold text-white">${p.name}</h3>
+                    <p class="text-xs text-gray-400 italic mt-2">"${p.quote}"</p>
+                </div>
+            `).join('');
+
+            // Populate Filter Kelas/Divisi secara Dinamis
+            updateClassFilterOptions();
+
+            // Render Anggota
+            renderMembers(appData.members);
+
+            // Render Timeline
+            const timelineContainer = document.getElementById('timelineContainer');
+            timelineContainer.innerHTML = appData.timeline.map(t => `
+                <div class="relative pl-6">
+                    <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-brand-gold border-4 border-[#0f0f13]"></div>
+                    <span class="text-xs font-bold text-brand-gold tracking-widest uppercase">${t.year}</span>
+                    <h3 class="text-lg font-bold text-white mt-0.5">${t.title}</h3>
+                    <p class="text-sm text-gray-400 mt-1">${t.desc}</p>
+                </div>
+            `).join('');
+
+            // Render Galeri
+            const galleryGrid = document.getElementById('galleryGrid');
+            galleryGrid.innerHTML = appData.gallery.map(g => `
+                <div class="glass-card rounded-2xl overflow-hidden group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="${g.img}" alt="${g.title}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <span class="absolute top-3 left-3 text-[10px] font-bold px-2.5 py-1 rounded-md bg-black/70 text-brand-gold border border-brand-gold/30">${g.category}</span>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="text-sm font-bold text-white">${g.title}</h4>
+                    </div>
+                </div>
+            `).join('');
+
+            // Render Guestbook
+            renderGuestbook();
+
+            // Render Nav Admin Button Status
+            if (currentUser) {
+                document.getElementById('adminBtnText').innerText = "Dashboard Admin";
+            } else {
+                document.getElementById('adminBtnText').innerText = "Login Admin";
+            }
+        }
+
+        // PREVIEW CUSTOM LOGO CMS
+        function previewLogoCMS(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const base64Str = e.target.result;
+                    document.getElementById('editLogoBase64').value = base64Str;
+                    document.getElementById('editLogoUrl').value = base64Str;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // PREVIEW FOTO KESAN PESAN
+        function previewGuestImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const base64String = e.target.result;
+                    document.getElementById('guestBase64Img').value = base64String;
+                    document.getElementById('guestImgPreview').src = base64String;
+                    document.getElementById('guestImgPreviewContainer').classList.remove('hidden');
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // PREVIEW FOTO PENGURUS DI CMS
+        function previewPengurusImageCMS(event, idx) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const base64Str = e.target.result;
+                    document.getElementById('pImgInput_' + idx).value = base64Str;
+                    document.getElementById('pImgThumb_' + idx).src = base64Str;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // PREVIEW FOTO ANGGOTA DI CMS
+        function previewMemberImageCMS(event, idx) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const base64Str = e.target.result;
+                    document.getElementById('mImgInput_' + idx).value = base64Str;
+                    document.getElementById('mImgThumb_' + idx).src = base64Str;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // PREVIEW FOTO GALERI DARI HP DI CMS
+        function previewGalleryDeviceImage(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = e => {
+                document.getElementById('galleryImgPreview').src = e.target.result;
+                document.getElementById('galleryPreviewContainer').classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Upload foto ke Supabase Storage; database hanya menyimpan URL publik.
+        async function addNewGalleryPhoto() {
+            const title = document.getElementById('galleryTitleInput').value.trim();
+            const category = document.getElementById('galleryCatInput').value;
+            const file = document.getElementById('galleryFileDevice').files[0];
+            let finalImg = document.getElementById('galleryUrlInput').value.trim();
+            if (!title) { alert("Harap masukkan judul foto."); return; }
+            if (!sb || !currentUser) { alert("Login sebagai admin dan hubungkan Supabase terlebih dahulu."); return; }
+            if (file) {
+                if (!file.type.startsWith("image/")) { alert("File harus berupa gambar."); return; }
+                if (file.size > 5 * 1024 * 1024) { alert("Ukuran foto maksimal 5 MB."); return; }
+                const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+                const randomPart = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : (Date.now() + "-" + Math.random().toString(16).slice(2));
+                const path = `${randomPart}-${safeName}`;
+                const { error: uploadError } = await sb.storage.from("wonderfation-gallery").upload(path, file, { upsert: false, contentType: file.type });
+                if (uploadError) { alert("Upload foto gagal: " + uploadError.message); return; }
+                finalImg = sb.storage.from("wonderfation-gallery").getPublicUrl(path).data.publicUrl;
+            }
+            if (!finalImg) { alert("Pilih foto dari HP atau masukkan URL foto."); return; }
+            appData.gallery.unshift({ title, category, img: finalImg });
+            await saveData();
+            loadCmsData();
+            document.getElementById('galleryTitleInput').value = "";
+            document.getElementById('galleryBase64Output').value = "";
+            document.getElementById('galleryUrlInput').value = "";
+            document.getElementById('galleryFileDevice').value = "";
+            document.getElementById('galleryPreviewContainer').classList.add('hidden');
+            alert("Foto berhasil diunggah ke penyimpanan online.");
+        }
+
+        // UPDATE DROPDOWN FILTER KELAS/DIVISI DINAMIS
+        function updateClassFilterOptions() {
+            const filterClassSelect = document.getElementById('filterClass');
+            const classes = ['ALL', ...new Set(appData.members.map(m => m.class))];
+            
+            filterClassSelect.innerHTML = classes.map(c => `
+                <option value="${c}">${c === 'ALL' ? 'Semua Divisi/Kelas' : c}</option>
+            `).join('');
+        }
+
+        // FILTER ANGGOTA
+        function renderMembers(data) {
+            const membersGrid = document.getElementById('membersGrid');
+            membersGrid.innerHTML = data.map(m => `
+                <div class="glass-card p-5 rounded-2xl text-center">
+                    <img src="${m.img || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400'}" alt="${m.name}" class="w-20 h-20 rounded-full object-cover mx-auto mb-3 border border-white/20">
+                    <h3 class="text-base font-bold text-white">${m.name}</h3>
+                    <span class="text-[11px] text-brand-gold font-semibold block">${m.class} • ${m.role}</span>
+                    <p class="text-xs text-gray-400 italic mt-2">"${m.quote}"</p>
+                </div>
+            `).join('');
+            document.getElementById('statAnggota').innerText = appData.members.length + "+";
+        }
+
+        function filterMembers() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const filterClass = document.getElementById('filterClass').value;
+
+            const filtered = appData.members.filter(m => {
+                const matchSearch = m.name.toLowerCase().includes(search) || m.quote.toLowerCase().includes(search);
+                const matchClass = filterClass === "ALL" || m.class === filterClass;
+                return matchSearch && matchClass;
+            });
+
+            renderMembers(filtered);
+        }
+
+        // GUESTBOOK RENDER & SUBMIT
+        function renderGuestbook() {
+            const list = document.getElementById('guestbookList');
+            list.innerHTML = guestbook.map((g, idx) => `
+                <div class="glass p-5 rounded-2xl border border-white/10 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-gold to-amber-700 flex items-center justify-center text-black font-bold text-sm">
+                                ${g.name.charAt(0).toUpperCase()}
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">${g.name} <span class="text-xs font-normal text-brand-gold">(${g.role || 'Anggota'})</span></h4>
+                                <span class="text-[10px] text-gray-400">${g.date}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-200 leading-relaxed">"${g.msg}"</p>
+                    ${g.img ? `
+                        <div class="mt-3">
+                            <img src="${g.img}" alt="Lampiran Foto" class="max-h-64 rounded-xl border border-white/10 object-cover shadow-md">
+                        </div>
+                    ` : ''}
+                </div>
+            `).join('');
+        }
+
+        async function addGuestbookMessage(e) {
+            e.preventDefault();
+            if (!sb) { alert("Buku kesan-pesan belum terhubung ke database."); return; }
+            const name = document.getElementById('guestName').value.trim();
+            const role = document.getElementById('guestRole').value;
+            const msg = document.getElementById('guestMsg').value.trim();
+            const urlImg = document.getElementById('guestImgUrl').value.trim();
+            const { error } = await sb.from("guestbook").insert({ name, role, msg, img: urlImg || null });
+            if (error) { alert("Pesan gagal dikirim: " + error.message); return; }
+            document.getElementById('guestbookForm').reset();
+            document.getElementById('guestBase64Img').value = "";
+            document.getElementById('guestImgPreviewContainer').classList.add('hidden');
+            await loadSharedData();
+            alert("Kesan dan pesan berhasil dikirim!");
+        }
+
+        // ADMIN MODAL & AUTH
+        function openAdminModal() {
+            document.getElementById('adminModal').classList.remove('hidden');
+            if (currentUser) {
+                document.getElementById('authScreen').classList.add('hidden');
+                document.getElementById('dashboardScreen').classList.remove('hidden');
+                loadCmsData();
+            } else {
+                document.getElementById('authScreen').classList.remove('hidden');
+                document.getElementById('dashboardScreen').classList.add('hidden');
+            }
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').classList.add('hidden');
+        }
+
+        function switchAuthTab(tab) {
+            // Pendaftaran admin publik sengaja dinonaktifkan. Akun dibuat pemilik melalui Supabase.
+            document.getElementById('loginForm').classList.remove('hidden');
+        }
+
+        async function handleLogin(e) {
+            e.preventDefault();
+            if (!sb) { alert("Supabase belum dikonfigurasi. Isi URL dan publishable key terlebih dahulu."); return; }
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPass').value;
+            const { data, error } = await sb.auth.signInWithPassword({ email, password });
+            if (error) { alert("Login gagal: " + error.message); return; }
+            currentUser = data.user;
+            const { data: adminRow, error: adminError } = await sb.from("admin_members").select("user_id").eq("user_id", currentUser.id).maybeSingle();
+            if (adminError || !adminRow) {
+                await sb.auth.signOut(); currentUser = null;
+                alert("Login berhasil, tetapi akun ini belum terdaftar sebagai admin website.");
+                return;
+            }
+            openAdminModal();
+            renderAll();
+        }
+
+        async function handleRegister(e) {
+            e.preventDefault();
+            alert("Pendaftaran admin tidak tersedia dari website. Pemilik harus membuat akun dan memberikan izin admin melalui Supabase.");
+        }
+
+        async function handleLogout() {
+            if (sb) await sb.auth.signOut();
+            currentUser = null;
+            closeAdminModal();
+            updateAdminButton();
+            renderAll();
+        }
+
+        // CMS LOGIC
+        function switchCmsTab(tab) {
+            document.querySelectorAll('.cms-panel').forEach(p => p.classList.add('hidden'));
+            document.querySelectorAll('.cms-tab-btn').forEach(b => {
+                b.className = "cms-tab-btn px-4 py-2 text-xs font-semibold rounded-lg bg-zinc-800 text-gray-300";
+            });
+
+            if (tab === 'identitas') {
+                document.getElementById('cmsIdentitas').classList.remove('hidden');
+            } else if (tab === 'pengurus') {
+                document.getElementById('cmsPengurus').classList.remove('hidden');
+            } else if (tab === 'anggota') {
+                document.getElementById('cmsAnggota').classList.remove('hidden');
+            } else if (tab === 'galeri') {
+                document.getElementById('cmsGaleri').classList.remove('hidden');
+            } else if (tab === 'pesan') {
+                document.getElementById('cmsPesan').classList.remove('hidden');
+            } else if (tab === 'timeline') {
+                document.getElementById('cmsTimeline').classList.remove('hidden');
+            }
+            event.target.className = "cms-tab-btn px-4 py-2 text-xs font-semibold rounded-lg bg-brand-gold text-black";
+        }
+
+        function loadCmsData() {
+            document.getElementById('editTitle').value = appData.identitas.title;
+            document.getElementById('editSubtitle').value = appData.identitas.subtitle;
+            document.getElementById('editQuote').value = appData.identitas.quote;
+            document.getElementById('editAbout').value = appData.identitas.about;
+            document.getElementById('editLogoUrl').value = appData.identitas.logoUrl || "";
+
+            // Render CMS Pengurus List
+            const pList = document.getElementById('cmsPengurusList');
+            pList.innerHTML = appData.pengurus.map((p, idx) => `
+                <div class="bg-zinc-900 p-3.5 rounded-xl border border-white/10 space-y-3">
+                    <div class="flex items-center gap-4">
+                        <img id="pImgThumb_${idx}" src="${p.img || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400'}" class="w-14 h-14 rounded-full object-cover border border-brand-gold/50 shrink-0">
+                        <div class="w-full space-y-1">
+                            <label class="text-[10px] text-brand-gold font-bold block">Ubah Foto Pengurus (Upload File atau URL)</label>
+                            <div class="flex gap-2">
+                                <input type="file" accept="image/*" onchange="previewPengurusImageCMS(event, ${idx})" class="w-1/2 text-[10px] text-gray-300 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-[10px] file:font-semibold file:bg-zinc-800 file:text-brand-gold">
+                                <input type="text" value="${p.img || ''}" id="pImgInput_${idx}" placeholder="Atau paste URL foto" class="w-1/2 px-2 py-1 bg-zinc-800 text-xs text-white rounded border border-white/10">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <div>
+                            <label class="text-[10px] text-gray-400 block">Jabatan / Peran</label>
+                            <input type="text" value="${p.role}" id="pRole_${idx}" class="w-full px-2 py-1 bg-zinc-800 text-xs text-white rounded border border-white/10">
+                        </div>
+                        <div>
+                            <label class="text-[10px] text-gray-400 block">Nama Lengkap</label>
+                            <input type="text" value="${p.name}" id="pName_${idx}" class="w-full px-2 py-1 bg-zinc-800 text-xs text-white rounded border border-white/10">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="text-[10px] text-gray-400 block">Quote / Pesan</label>
+                        <input type="text" value="${p.quote || ''}" id="pQuote_${idx}" class="w-full px-2 py-1 bg-zinc-800 text-xs text-white rounded border border-white/10">
+                    </div>
+                    <div class="flex justify-end gap-2 pt-1">
+                        <button onclick="savePengurusSingle(${idx})" class="px-3 py-1 bg-brand-gold text-black text-xs font-bold rounded hover:bg-yellow-400">Simpan Pengurus</button>
+                        <button onclick="deletePengurus(${idx})" class="px-2 py-1 bg-red-600/20 text-red-400 text-xs font-semibold rounded border border-red-500/30 hover:bg-red-600 hover:text-white">Hapus</button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Render CMS Member List with Custom Photo Edit
+            const mList = document.getElementById('cmsMemberList');
+            mList.innerHTML = appData.members.map((m, idx) => `
+                <div class="bg-zinc-900 p-3.5 rounded-xl border border-white/10 space-y-3">
+                    <div class="flex items-center gap-4">
+                        <img id="mImgThumb_${idx}" src="${m.img || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400'}" class="w-14 h-14 rounded-full object-cover border border-brand-gold/50 shrink-0">
+                        <div class="w-full space-y-1">
+                            <label class="text-[10px] text-brand-gold font-bold block">Ubah Foto Anggota (Upload File atau URL)</label>
+                            <div class="flex gap-2">
+                                <input type="file" accept="image/*" onchange="previewMemberImageCMS(event, ${idx})" class="w-1/2 text-[10px] text-gray-300 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-[10px] file:font-semibold file:bg-zinc-800 file:text-brand-gold">
+                                <input type="text" value="${m.img || ''}" id="mImgInput_${idx}" placeholder="Atau paste URL foto" class="w-1/2 px-2 py-1 bg-zinc-800 text-xs text-white rounded border border-white/10">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        <div>
+                            <label class="text-[10px] text-gray-400 block">Nama</label>
+                            <input type="text" value="${m.name}" id="mName_${idx}" class="w-full px-2 py-1 bg-zinc-800 text-xs text-white rounded border border-white/10">
+                        </div>
+                        <div>
+                            <label class="text-[10px] text-brand-gold font-bold block">Kelas / Divisi</label>
+                            <input type="text" value="${m.class}" id="mClass_${idx}" placeholder="misal: IPA 1" class="w-full px-2 py-1 bg-zinc-800 text-xs text-white rounded border border-brand-gold/40">
+                        </div>
+                        <div>
+                            <label class="text-[10px] text-gray-400 block">Jabatan / Status</label>
+                            <input type="text" value="${m.role || 'Anggota'}" id="mRole_${idx}" class="w-full px-2 py-1 bg-zinc-800 text-xs text-white rounded border border-white/10">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="text-[10px] text-gray-400 block">Quote / Pesan Singkat</label>
+                        <input type="text" value="${m.quote || ''}" id="mQuote_${idx}" class="w-full px-2 py-1 bg-zinc-800 text-xs text-white rounded border border-white/10">
+                    </div>
+                    <div class="flex justify-end gap-2 pt-1">
+                        <button onclick="saveMemberSingle(${idx})" class="px-3 py-1 bg-brand-gold text-black text-xs font-bold rounded hover:bg-yellow-400">Simpan Anggota</button>
+                        <button onclick="deleteMember(${idx})" class="px-2 py-1 bg-red-600/20 text-red-400 text-xs font-semibold rounded border border-red-500/30 hover:bg-red-600 hover:text-white">Hapus</button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Render CMS Guestbook Moderation List
+            const gbList = document.getElementById('cmsGuestbookList');
+            gbList.innerHTML = guestbook.map((g, idx) => `
+                <div class="bg-zinc-900 p-3 rounded-lg border border-white/10 flex items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <h5 class="text-xs font-bold text-brand-gold">${g.name} <span class="text-gray-400 font-normal">(${g.role || 'Anggota'})</span></h5>
+                        <p class="text-xs text-gray-300">"${g.msg}"</p>
+                        ${g.img ? `<span class="text-[10px] text-emerald-400 block"><i class="fa-solid fa-image"></i> Ada Lampiran Foto</span>` : ''}
+                    </div>
+                    <button onclick="deleteGuestbookMessage(${idx})" class="px-3 py-1.5 bg-red-600/20 text-red-400 text-xs font-semibold rounded border border-red-500/30 hover:bg-red-600 hover:text-white shrink-0">Hapus</button>
+                </div>
+            `).join('');
+
+            const tList = document.getElementById('cmsTimelineList');
+            tList.innerHTML = appData.timeline.map((t, idx) => `
+                <div class="flex items-center justify-between bg-zinc-900 p-2.5 rounded border border-white/5 text-xs text-white">
+                    <div>
+                        <span class="text-brand-gold font-bold">[${t.year}]</span>
+                        <span class="ml-1 font-semibold">${t.title}</span>
+                    </div>
+                    <button onclick="deleteTimeline(${idx})" class="text-red-400 hover:text-red-300"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            `).join('');
+
+            const gList = document.getElementById('cmsGalleryList');
+            gList.innerHTML = appData.gallery.map((g, idx) => `
+                <div class="relative bg-zinc-900 p-2 rounded-xl border border-white/10 text-center space-y-1">
+                    <img src="${g.img}" class="h-20 w-full object-cover rounded-lg border border-white/10">
+                    <p class="text-[10px] text-white font-medium truncate">${g.title}</p>
+                    <button onclick="deleteGallery(${idx})" class="w-full py-1 bg-red-600/20 text-red-400 text-[10px] font-semibold rounded hover:bg-red-600 hover:text-white border border-red-500/30">Hapus Foto</button>
+                </div>
+            `).join('');
+        }
+
+        function saveIdentitas() {
+            appData.identitas.title = document.getElementById('editTitle').value;
+            appData.identitas.subtitle = document.getElementById('editSubtitle').value;
+            appData.identitas.quote = document.getElementById('editQuote').value;
+            appData.identitas.about = document.getElementById('editAbout').value;
+            
+            const base64Logo = document.getElementById('editLogoBase64').value;
+            const urlLogo = document.getElementById('editLogoUrl').value.trim();
+            if (base64Logo || urlLogo) {
+                appData.identitas.logoUrl = base64Logo || urlLogo;
+            }
+
+            saveData();
+            alert("Identitas & Logo Website Berhasil Diperbarui!");
+        }
+
+        function openAddPengurusForm() {
+            const name = prompt("Nama Pengurus:");
+            const role = prompt("Jabatan / Peran (misal: Ketua Angkatan, Humas, dll):");
+            const quote = prompt("Quote / Pesan:");
+            const img = prompt("URL Foto (Opsional, kosongkan untuk default):");
+            if (name && role) {
+                appData.pengurus.push({
+                    name: name,
+                    role: role,
+                    quote: quote || "Mengemban amanah dengan penuh tanggung jawab.",
+                    img: img || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400"
+                });
+                saveData();
+                loadCmsData();
+            }
+        }
+
+        function savePengurusSingle(idx) {
+            appData.pengurus[idx].role = document.getElementById('pRole_' + idx).value;
+            appData.pengurus[idx].name = document.getElementById('pName_' + idx).value;
+            appData.pengurus[idx].quote = document.getElementById('pQuote_' + idx).value;
+            appData.pengurus[idx].img = document.getElementById('pImgInput_' + idx).value || appData.pengurus[idx].img;
+            
+            saveData();
+            loadCmsData();
+            alert("Data & Foto Pengurus Berhasil Diperbarui!");
+        }
+
+        function deletePengurus(idx) {
+            if (confirm("Hapus pengurus ini dari struktur?")) {
+                appData.pengurus.splice(idx, 1);
+                saveData();
+                loadCmsData();
+            }
+        }
+
+        function saveMemberSingle(idx) {
+            appData.members[idx].name = document.getElementById('mName_' + idx).value;
+            appData.members[idx].class = document.getElementById('mClass_' + idx).value;
+            appData.members[idx].role = document.getElementById('mRole_' + idx).value;
+            appData.members[idx].quote = document.getElementById('mQuote_' + idx).value;
+            appData.members[idx].img = document.getElementById('mImgInput_' + idx).value || appData.members[idx].img;
+            
+            saveData();
+            loadCmsData();
+            alert("Data & Foto Anggota Berhasil Diperbarui!");
+        }
+
+        async function deleteGuestbookMessage(idx) {
+            if (!currentUser || !sb) { alert("Akses admin diperlukan."); return; }
+            const row = guestbook[idx];
+            if (row?.id && confirm("Hapus pesan ini dari buku kesan & pesan?")) {
+                const { error } = await sb.from("guestbook").delete().eq("id", row.id);
+                if (error) { alert("Gagal menghapus: " + error.message); return; }
+                await loadSharedData(); loadCmsData();
+            }
+        }
+
+        function openAddMemberForm() {
+            const name = prompt("Nama Anggota:");
+            const kelas = prompt("Kelas / Divisi (misal: IPA 1, IPS 2, Keagamaan):");
+            const quote = prompt("Quote / Pesan Singkat:");
+            const img = prompt("URL Foto Anggota (Opsional, biarkan kosong untuk default):");
+            if (name) {
+                appData.members.push({
+                    id: Date.now(),
+                    name: name,
+                    class: kelas || "Umum",
+                    role: "Anggota",
+                    quote: quote || "-",
+                    img: img || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400"
+                });
+                saveData();
+                loadCmsData();
+            }
+        }
+
+        function deleteMember(idx) {
+            if (confirm("Hapus anggota ini?")) {
+                appData.members.splice(idx, 1);
+                saveData();
+                loadCmsData();
+            }
+        }
+
+        function openAddTimelineForm() {
+            const year = prompt("Tahun / Periode (misal: 2026):");
+            const title = prompt("Judul Momen / Event:");
+            const desc = prompt("Deskripsi Perjalanan:");
+            if (year && title) {
+                appData.timeline.push({
+                    year: year,
+                    title: title,
+                    desc: desc || "-"
+                });
+                saveData();
+                loadCmsData();
+            }
+        }
+
+        function deleteTimeline(idx) {
+            if (confirm("Hapus rincian timeline ini?")) {
+                appData.timeline.splice(idx, 1);
+                saveData();
+                loadCmsData();
+            }
+        }
+
+        function deleteGallery(idx) {
+            if (confirm("Hapus foto ini dari galeri?")) {
+                appData.gallery.splice(idx, 1);
+                saveData();
+                loadCmsData();
+            }
+        }
+
+        function exportDataJSON() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(appData, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", "wonderfation_backup_data.json");
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (!sb) {
+                console.warn("Supabase belum dikonfigurasi. Isi SUPABASE_URL dan SUPABASE_PUBLISHABLE_KEY.");
+                renderAll(); renderGuestbook(); updateAdminButton();
+                return;
+            }
+            await refreshAuthState();
+            await loadSharedData();
+            updateAdminButton();
+        });
+    </script>
+</body>
+</html>
